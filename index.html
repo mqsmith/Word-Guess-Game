@@ -2,46 +2,78 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Hangman Game</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://use.fontawesome.com/fbad964f1f.js"></script>
-        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-        <!-- I want to use bootstrap to create rows and columns. In these rows and columns I can build the display. -->
-        <header class="main-header">
-            <h1>Auto's for Otto</h1>
-            <span>Word-Guessing-Game</span>
-        </header>
-       
-        <div class="container">
-            <div class="row"> 
-               
-            </div>
-            <div class="row">
+<head>
+        
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hangman Game</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
 
+
+</head>
+
+<body>
+    <header id="main-header">
+        <h1>Yoda's Toyoda!</h1>
+        <span>Word-Guessing-Game</span>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div> <!--padding-->
+            <section class="col-12 col-lg-8" id="section-block">
+                <header>
+                    <h2>Guess The Word</h2>
+                </header>
+                <p id="instructions">Enter any key to start !</p>
+                <div class="mobileInput">
+                    <input type="text" id="textInput" value="">
+                </div>
+                <p id="message">Hello Player</p>
+                <p id="userAnswer">- - - S T A R T- - -</p>
+                <p id="userGuess">You Guessed: </p>
+            </section>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <aside class="col-6 col-lg-4" id="aside-block">
+                <header>
+                    <h3>Score Board</h3>
+                </header>
+                <p>Win: <span id="win">0</span></p>
+                <p>Lose: <span id="lose">0</span></p>
+                <p>Tries Left: <span id="tries">10</span></p>
+            </aside>
+            <div class="col-6 col-lg-4" id="img-container">
+                <img src="assets/images/collage.jpg" alt="img" class="img-fluid" id="picture">
             </div>
         </div>
+    </div>
 
-        
+    <footer>
+        <span>&copy; Copyright 2019 v1.1</span>
+    </footer>
+    
+    <!--Javascript-->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</body>
+
         <!-- I want to dispay a Header that is a the "superfont" -->
         <!-- I want to dispay the "game board" with 2 colums, one that dosplays a picture of the team as a hint -->
         <!-- I need dispaly the answer with - - - - - -->
         <!-- I need to show wins and increment them up as the game goes on -->
         <!-- I need to show number of games remaining and increment down -->
         <!-- I also need to show the user guesses and make nothing happen after I guess that letter once. -->
-        
-        <script src="" async defer></script>
-    </body>
+
+
 </html>
