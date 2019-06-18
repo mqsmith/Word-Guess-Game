@@ -15,68 +15,72 @@ var inputField = document.getElementById("textInput");
 
 
 var winCount = 0;
-var loseCount = 0;
+var lossCount = 0;
 var triesLeft = 10;
-var wordList = ["Ford", "Toyoda", "Chevrolet", "Tesla", "Prosche", "Honda"]; //List of words for game
+var wordList = ["FORD", "TOYODA", "CHEVROLET", "TESLA", "PORSCHE", "HONDA"]; //List of words for game
 var imgList = []; //List image reference
 var answers = "";
 var imageSrc = "";
 var displayWord = []; //Empty list to display word as '-' and to compare with answers
-var wrongGuess = []; //Empty list to hold letters that the user guessed wrong
+var guess = []; //Empty list to hold letters that the user guessed wrong
 var rightGuess = []; //Empty list to hold letters that the user guessed right
+var chosenWord;
 
 window.onload = function () {
-    var chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
+    chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
     console.log(chosenWord)
     displayWord.push(chosenWord);
     console.log(displayWord);
-}
-document.onkeyup = function (event) {
-    // Determines which key was pressed.
-    var keyPush = event.key;
-    userAnswer.textContent = displayWord;
-    instructions.textContent = " ";
-    message.textContent = "Guess the Auto Maker!";
     var blank = displayWord[0].toString()
-    console.log(blank);
-    for (i=0; i<blank.length; i++){
-        var replace = blank.replace(blank[i],"-");
-        console.log(replace);
-        };
-    
+    for (var i = 0; i < blank.length; i++) {
+        displayWord[i] = "-";
+    }
+    console.log(displayWord);
+    userAnswer.textContent = displayWord;
+    userTries.textContent = triesLeft;
 }
-
-
-// document.onkeyup = function (event) {
+// document.onkeydown = function (event) {
+//     // Determines which key was pressed.
 //     var keyPush = event.key;
-//     for (i=0; i<displayWord.length; i++){
-//         if (keyPush !== displayWord.charAt(i)) {
-//             triesLeft--;
-//             console.log(charAt(i));
-//             var losses = document.getElementById("losses");
-//             losses.textContent = "Number of Losses: " + numberOfLosses;
-//             var wins = document.getElementById("wins");
-//             wins.textContent = "Number of Wins: " + numberOfWins;
-//             var guesses = document.getElementById("guesses");
-//             guesses.textContent = "Number of Guesses Remaining: " + numberOfGuesses;
-//             var remaining = document.getElementById("soFar");
-//             remaining.textContent = "Your Guesses so Far: " + guessesSoFar;
-//             console.log(guessesSoFar);
-//             guessesSoFar.push(userGuess);
-//             if (numberOfGuesses === 0) {
-//                 alert("Game Over!");
-//                 numberOfGuesses = 15;
-//                 numberOfLosses = 0;
-//                 numberOfWins = 0;
-//                 guessesSoFar = [];
-//             };
-//         }
-//     }
-    
+
+//     instructions.textContent = " ";
+//     message.textContent = "Guess the Auto Maker!";
 // }
 
-   
+function checkGuess(letter) {
+    
+        //if letter is not in guessedLetters array then push the letter to the array
+        if (guess.indexOf(letter) === -1) {
+            guess.push(letter);
+            //if the letter isn't in the answer word then -1 the numGuessesRemaining
+            if (chosenWord.indexOf(letter) === -1) {
+                tiresLeft = triesLeft--;
+                userTries.textContent = triesLeft;
+                //if numGuessesRemaining is 3 or less then change the color
+                if (triesLeft <=3) {
+                    document.getElementById("tries").style.color = "#e12d2e";
+                }
+                //if letter is in answer then replace the positioned "_" with the letter
+            } else { 
+                for (var i = 0; i < chosenWord.length; i++) {
+                    if (letter === chosenWord[i]) {
+                        displayWord[i] = letter;
+                        console.log(displayWord[i]);
+                        userAnswer.textContent = displayWord[i];
+                    } 
+                }                
+            }
+        }
+    console.log(guess);
+    userGuess.textContent = "You Guessed: " + guess;
+    
+};
 
+document.onkeyup = function (event) {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        checkGuess(event.key.toUpperCase());
+    }
+};
 
 
 
