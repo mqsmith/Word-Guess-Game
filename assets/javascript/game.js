@@ -67,6 +67,23 @@ function checkGuess(letter) {
                 }
             }
         }
+
+        if (displayWord === chosenWord) {
+            //reset the chosenWord
+            // reset all associated arrays
+            displayWord = []; //Empty list to display word as '-' and to compare with answers
+            guess = []; //Empty list to hold letters that the user guessed
+            rightGuess = []; //Empty list to hold letters that the user guessed right
+            chosenWord;
+            // increment wins
+            winCount++;
+            // reset triesLeft
+            triesLeft = 10;
+            document.getElementById("tries").style.color = "white";
+            userTries.textContent = triesLeft;
+            window.onload();
+        }
+
         if(triesLeft === 0)  {
             //reset chosenWord
             // reset all associated arrays
@@ -79,23 +96,10 @@ function checkGuess(letter) {
             //reset triesLeft
             triesLeft = 10;
             userTries.textContent = triesLeft;
+            document.getElementById("tries").style.color = "white";
             window.onload();
         }
     
-        if (displayWord === chosenWord) {
-            //reset the chosenWord
-            // reset all associated arrays
-            displayWord = []; //Empty list to display word as '-' and to compare with answers
-            guess = []; //Empty list to hold letters that the user guessed
-            rightGuess = []; //Empty list to hold letters that the user guessed right
-            chosenWord;
-            // increment wins
-            winCount++;
-            // reset triesLeft
-            triesLeft = 10;
-            userTries.textContent = triesLeft;
-            window.onload();
-        }
 
     }
 
