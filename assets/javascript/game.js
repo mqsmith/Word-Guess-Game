@@ -49,39 +49,56 @@ window.onload = function () {
 // }
 
 function checkGuess(letter) {
-    
-        //if letter is not in guess array then push the letter to the array
-        if (guess.indexOf(letter) === -1) {
-            guess.push(letter);
-            //if the letter isn't in the answer word then -1 the tiresLeft
-            if (chosenWord.indexOf(letter) === -1) {
-                tiresLeft = triesLeft--;
-                userTries.textContent = triesLeft;
-                //if numGuessesRemaining is 3 or less then change the color
-                if (triesLeft <=3) {
-                    document.getElementById("tries").style.color = "#e12d2e";
+
+    //if letter is not in guess array then push the letter to the array
+    if (guess.indexOf(letter) === -1) {
+        guess.push(letter);
+        //if the letter isn't in the answer word then -1 the tiresLeft
+        if (chosenWord.indexOf(letter) === -1) {
+            tiresLeft = triesLeft--;
+            userTries.textContent = triesLeft;
+            //if numGuessesRemaining is 3 or less then change the color
+            if (triesLeft <= 3) {
+                document.getElementById("tries").style.color = "#e12d2e";
+            }
+            //if letter is in answer then replace the positioned "_" with the letter
+        } else {
+            for (var i = 0; i < chosenWord.length; i++) {
+                if (letter === chosenWord[i]) {
+                    displayWord[i] = letter;
+                    rightGuess.push(displayWord);
+                    console.log(rightGuess);
+                    userAnswer.textContent = displayWord.join("");
                 }
-                //if letter is in answer then replace the positioned "_" with the letter
-            } else { 
-                for (var i = 0; i < chosenWord.length; i++) {
-                    if (letter === chosenWord[i]) {
-                        displayWord[i] = letter;
-                        rightGuess.push(displayWord);
-                        console.log(rightGuess);
-                        
-                        userAnswer.textContent = displayWord.join("");
-                    } 
-                }                
             }
         }
-    console.log(guess);
-    userGuess.textContent = "You Guessed: " + guess;
-    
+
+    }
+     
+console.log(guess);
+userGuess.textContent = "You Guessed: " + guess;
+
 };
+
+function reset(game){
+    if(tiresLeft=== 0)  {
+        //reset chosenWord
+        //increment losses
+        //reset triesLeft
+    }
+
+    else if (rightGuess===chosenWord) {
+        //reset the chosenWord
+        // increment wins
+        // reset triesLeft
+    }
+}
 
 document.onkeyup = function (event) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         checkGuess(event.key.toUpperCase());
+        instructions.textContent = " ";
+        message.textContent = "Guess the Auto Maker!";
     }
 };
 
