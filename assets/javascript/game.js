@@ -79,22 +79,22 @@ function checkGuess(letter) {
             //reset triesLeft
             triesLeft = 10;
             userTries.textContent = triesLeft;
-            start();
+            window.onload();
         }
     
-        else if (displayWord === chosenWord) {
+        if (displayWord === chosenWord) {
             //reset the chosenWord
             // reset all associated arrays
             displayWord = []; //Empty list to display word as '-' and to compare with answers
             guess = []; //Empty list to hold letters that the user guessed
             rightGuess = []; //Empty list to hold letters that the user guessed right
             chosenWord;
-            start();
             // increment wins
             winCount++;
             // reset triesLeft
             triesLeft = 10;
             userTries.textContent = triesLeft;
+            window.onload();
         }
 
     }
