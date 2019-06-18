@@ -22,7 +22,7 @@ var imgList = []; //List image reference
 var answers = "";
 var imageSrc = "";
 var displayWord = []; //Empty list to display word as '-' and to compare with answers
-var guess = []; //Empty list to hold letters that the user guessed wrong
+var guess = []; //Empty list to hold letters that the user guessed
 var rightGuess = []; //Empty list to hold letters that the user guessed right
 var chosenWord;
 
@@ -50,10 +50,10 @@ window.onload = function () {
 
 function checkGuess(letter) {
     
-        //if letter is not in guessedLetters array then push the letter to the array
+        //if letter is not in guess array then push the letter to the array
         if (guess.indexOf(letter) === -1) {
             guess.push(letter);
-            //if the letter isn't in the answer word then -1 the numGuessesRemaining
+            //if the letter isn't in the answer word then -1 the tiresLeft
             if (chosenWord.indexOf(letter) === -1) {
                 tiresLeft = triesLeft--;
                 userTries.textContent = triesLeft;
@@ -66,8 +66,10 @@ function checkGuess(letter) {
                 for (var i = 0; i < chosenWord.length; i++) {
                     if (letter === chosenWord[i]) {
                         displayWord[i] = letter;
-                        console.log(displayWord[i]);
-                        userAnswer.textContent = displayWord[i];
+                        rightGuess.push(displayWord);
+                        console.log(rightGuess);
+                        
+                        userAnswer.textContent = displayWord.join("");
                     } 
                 }                
             }
