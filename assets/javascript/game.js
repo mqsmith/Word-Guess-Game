@@ -39,32 +39,41 @@ document.onkeyup = function (event) {
     message.textContent = "Guess the Auto Maker!";
     var blank = displayWord[0].toString()
     console.log(blank);
+    for (i=0; i<blank.length; i++){
+        var replace = blank.replace(blank[i],"-");
+        console.log(replace);
+        };
+    
 }
 
-document.onkeyup = function (event) {
-    var keyPush = event.key;
-    if (userGuess !== computerGuess) {
-        triesLeft--;
-        console.log("Number of Losses " + numberOfLosses);
-        var losses = document.getElementById("losses");
-        losses.textContent = "Number of Losses: " + numberOfLosses;
-        var wins = document.getElementById("wins");
-        wins.textContent = "Number of Wins: " + numberOfWins;
-        var guesses = document.getElementById("guesses");
-        guesses.textContent = "Number of Guesses Remaining: " + numberOfGuesses;
-        var remaining = document.getElementById("soFar");
-        remaining.textContent = "Your Guesses so Far: " + guessesSoFar;
-        console.log(guessesSoFar);
-        guessesSoFar.push(userGuess);
-        if (numberOfGuesses === 0) {
-            alert("Game Over!");
-            numberOfGuesses = 15;
-            numberOfLosses = 0;
-            numberOfWins = 0;
-            guessesSoFar = [];
-        };
-    }
-}
+
+// document.onkeyup = function (event) {
+//     var keyPush = event.key;
+//     for (i=0; i<displayWord.length; i++){
+//         if (keyPush !== displayWord.charAt(i)) {
+//             triesLeft--;
+//             console.log(charAt(i));
+//             var losses = document.getElementById("losses");
+//             losses.textContent = "Number of Losses: " + numberOfLosses;
+//             var wins = document.getElementById("wins");
+//             wins.textContent = "Number of Wins: " + numberOfWins;
+//             var guesses = document.getElementById("guesses");
+//             guesses.textContent = "Number of Guesses Remaining: " + numberOfGuesses;
+//             var remaining = document.getElementById("soFar");
+//             remaining.textContent = "Your Guesses so Far: " + guessesSoFar;
+//             console.log(guessesSoFar);
+//             guessesSoFar.push(userGuess);
+//             if (numberOfGuesses === 0) {
+//                 alert("Game Over!");
+//                 numberOfGuesses = 15;
+//                 numberOfLosses = 0;
+//                 numberOfWins = 0;
+//                 guessesSoFar = [];
+//             };
+//         }
+//     }
+    
+// }
 
    
 
