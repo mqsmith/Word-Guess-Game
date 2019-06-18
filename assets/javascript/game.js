@@ -18,15 +18,16 @@ var winCount = 0;
 var lossCount = 0;
 var triesLeft = 10;
 var wordList = ["FORD", "TOYODA", "CHEVROLET", "TESLA", "PORSCHE", "HONDA"]; //List of words for game
-var imgList = []; //List image reference
-var answers = "";
-var imageSrc = "";
+// var imgList = []; //List image reference
+// var answers = "";
+// var imageSrc = "";
 var displayWord = []; //Empty list to display word as '-' and to compare with answers
 var guess = []; //Empty list to hold letters that the user guessed
 var rightGuess = []; //Empty list to hold letters that the user guessed right
 var chosenWord;
+var win = [];
 
-window.onload = function start () {
+window.onload = function start() {
     chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
     console.log(chosenWord)
     displayWord.push(chosenWord);
@@ -67,24 +68,29 @@ function checkGuess(letter) {
                 }
             }
         }
-
-        if (displayWord === chosenWord) {
+        console.log(displayWord, chosenWord, win);
+        console.log(rightGuess);
+        win.push(chosenWord);
+        if (rightGuess.length === chosenWord.length) {
             //reset the chosenWord
             // reset all associated arrays
             displayWord = []; //Empty list to display word as '-' and to compare with answers
             guess = []; //Empty list to hold letters that the user guessed
-            rightGuess = []; //Empty list to hold letters that the user guessed right
-            chosenWord;
-            // increment wins
-            winCount++;
-            // reset triesLeft
-            triesLeft = 10;
-            document.getElementById("tries").style.color = "white";
-            userTries.textContent = triesLeft;
-            window.onload();
-        }
+                rightGuess = []; //Empty list to hold letters that the user guessed right
+                chosenWord;
+                // increment wins
+                winCount++;
+                console.log(winCount);
+                userWins.textContent = winCount;
+                // reset triesLeft
+                triesLeft = 10;
+                document.getElementById("tries").style.color = "white";
+                userTries.textContent = triesLeft;
+                window.onload();
+            }
+        
 
-        if(triesLeft === 0)  {
+        if (triesLeft === 0) {
             //reset chosenWord
             // reset all associated arrays
             displayWord = []; //Empty list to display word as '-' and to compare with answers
@@ -93,23 +99,25 @@ function checkGuess(letter) {
             chosenWord;
             //increment losses
             lossCount++;
+            console.log(lossCount);
+            userLoss.textContent = lossCount;
             //reset triesLeft
             triesLeft = 10;
             userTries.textContent = triesLeft;
             document.getElementById("tries").style.color = "white";
             window.onload();
         }
-    
+
 
     }
 
-console.log(guess);
-userGuess.textContent = "You Guessed: " + guess;
+    console.log(guess);
+    userGuess.textContent = "You Guessed: " + guess;
 
 };
 
-function reset(game){
-   
+function reset(game) {
+
 }
 
 document.onkeyup = function (event) {
