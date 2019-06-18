@@ -26,7 +26,7 @@ var guess = []; //Empty list to hold letters that the user guessed
 var rightGuess = []; //Empty list to hold letters that the user guessed right
 var chosenWord;
 
-window.onload = function () {
+window.onload = function start () {
     chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
     console.log(chosenWord)
     displayWord.push(chosenWord);
@@ -40,13 +40,7 @@ window.onload = function () {
     userAnswer.textContent = displayWord.join("");
     userTries.textContent = triesLeft;
 }
-// document.onkeydown = function (event) {
-//     // Determines which key was pressed.
-//     var keyPush = event.key;
 
-//     instructions.textContent = " ";
-//     message.textContent = "Guess the Auto Maker!";
-// }
 
 function checkGuess(letter) {
 
@@ -57,7 +51,7 @@ function checkGuess(letter) {
         if (chosenWord.indexOf(letter) === -1) {
             tiresLeft = triesLeft--;
             userTries.textContent = triesLeft;
-            //if numGuessesRemaining is 3 or less then change the color
+            //if triesLeft is 3 or less then change the color
             if (triesLeft <= 3) {
                 document.getElementById("tries").style.color = "#e12d2e";
             }
@@ -67,31 +61,51 @@ function checkGuess(letter) {
                 if (letter === chosenWord[i]) {
                     displayWord[i] = letter;
                     rightGuess.push(displayWord);
-                    console.log(rightGuess);
+                    // console.log(rightGuess);
+                    console.log(displayWord);
                     userAnswer.textContent = displayWord.join("");
                 }
             }
         }
+        if(triesLeft === 0)  {
+            //reset chosenWord
+            // reset all associated arrays
+            displayWord = []; //Empty list to display word as '-' and to compare with answers
+            guess = []; //Empty list to hold letters that the user guessed
+            rightGuess = []; //Empty list to hold letters that the user guessed right
+            chosenWord;
+            //increment losses
+            lossCount++;
+            //reset triesLeft
+            triesLeft = 10;
+            userTries.textContent = triesLeft;
+            start();
+        }
+    
+        else if (displayWord === chosenWord) {
+            //reset the chosenWord
+            // reset all associated arrays
+            displayWord = []; //Empty list to display word as '-' and to compare with answers
+            guess = []; //Empty list to hold letters that the user guessed
+            rightGuess = []; //Empty list to hold letters that the user guessed right
+            chosenWord;
+            start();
+            // increment wins
+            winCount++;
+            // reset triesLeft
+            triesLeft = 10;
+            userTries.textContent = triesLeft;
+        }
 
     }
-     
+
 console.log(guess);
 userGuess.textContent = "You Guessed: " + guess;
 
 };
 
 function reset(game){
-    if(tiresLeft=== 0)  {
-        //reset chosenWord
-        //increment losses
-        //reset triesLeft
-    }
-
-    else if (rightGuess===chosenWord) {
-        //reset the chosenWord
-        // increment wins
-        // reset triesLeft
-    }
+   
 }
 
 document.onkeyup = function (event) {
