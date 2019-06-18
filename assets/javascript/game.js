@@ -36,7 +36,8 @@ window.onload = function () {
         displayWord[i] = "-";
     }
     console.log(displayWord);
-    userAnswer.textContent = displayWord;
+    console.log(displayWord.join(""));
+    userAnswer.textContent = displayWord.join("");
     userTries.textContent = triesLeft;
 }
 // document.onkeydown = function (event) {
