@@ -29,6 +29,7 @@ var win = [];
 
 window.onload = function start() {
     chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
+    console.log(chosenWord.indexOf());
     console.log(chosenWord)
     displayWord.push(chosenWord);
     console.log(displayWord);
