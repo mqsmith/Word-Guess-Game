@@ -18,7 +18,7 @@ var winCount = 0;
 var lossCount = 0;
 var triesLeft = 10;
 var wordList = ["FORD", "TOYODA", "CHEVROLET", "TESLA", "PORSCHE", "HONDA"]; //List of words for game
-var imgList = ["assets/images/ford.jpg", "assets/images/toyoda.jpg", "assets/images/chevy.jpg", "assets/images/modelS.jpg", "assets/images/porsche.jpeg","assets/images/honda.jpg"]; //List image reference
+var imgList = ["assets/images/ford.jpg", "assets/images/toyoda.jpg", "assets/images/chevy.jpg", "assets/images/modelS.jpg", "assets/images/porsche.jpeg", "assets/images/honda.jpg"]; //List image reference
 var indexImg = 0;
 var imageSrc = "";
 var displayWord = []; //Empty list to display word as '-' and to compare with answers
@@ -35,7 +35,7 @@ window.onload = function start() {
     console.log(imageSrc);
     img.style.opacity = "0.5";
     img.style.filter = "blur(10px)";
-    img.src=imageSrc;
+    img.src = imageSrc;
     console.log(chosenWord);
     displayWord.push(chosenWord);
     console.log(displayWord);
@@ -83,29 +83,31 @@ function checkGuess(letter) {
             // reset all associated arrays
             displayWord = []; //Empty list to display word as '-' and to compare with answers
             guess = []; //Empty list to hold letters that the user guessed
-                rightGuess = []; //Empty list to hold letters that the user guessed right
-                chosenWord;
-                // increment wins
-                winCount++;
-                console.log(winCount);
-                userWins.textContent = winCount;
-                // reset triesLeft
-                triesLeft = 10;
-                document.getElementById("tries").style.color = "white";
-                userTries.textContent = triesLeft;
-                window.onload();
-            }
-        
+            rightGuess = []; //Empty list to hold letters that the user guessed right
+            chosenWord;
+            // increment wins
+            winCount++;
+            console.log(winCount);
+            userWins.textContent = winCount;
+            // reset triesLeft
+            triesLeft = 10;
+            document.getElementById("tries").style.color = "white";
+            userTries.textContent = triesLeft;
+            img.style.opacity = "0.5";
+            img.style.filter = "blur(10px)";
+            window.onload();
+        }
+
         if (tiresLeft <= 7) {
-            img.style.filter =  "blur(8px)";
+            img.style.filter = "blur(8px)";
             img.style.opacity = ".7";
         }
         if (tiresLeft <= 4) {
-            img.style.filter =  "blur(6px)";
+            img.style.filter = "blur(6px)";
             img.style.opacity = ".8";
         }
         if (tiresLeft <= 2) {
-            img.style.filter =  "blur(0px)";
+            img.style.filter = "blur(0px)";
             img.style.opacity = "1";
         }
         if (triesLeft === 0) {
@@ -123,6 +125,8 @@ function checkGuess(letter) {
             triesLeft = 10;
             userTries.textContent = triesLeft;
             document.getElementById("tries").style.color = "white";
+            img.style.opacity = "0.5";
+            img.style.filter = "blur(10px)";
             window.onload();
         }
 
