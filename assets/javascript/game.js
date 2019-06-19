@@ -33,6 +33,7 @@ window.onload = function start() {
     indexImg = wordList.indexOf(chosenWord);
     imageSrc = imgList[indexImg];
     console.log(imageSrc);
+    img.style.opacity = "0.5";
     img.src=imageSrc;
     console.log(chosenWord);
     displayWord.push(chosenWord);
