@@ -10,7 +10,7 @@ var instructions = document.getElementById("instructions");
 var img = document.getElementById("picture");
 var message = document.getElementById("message");
 var inputField = document.getElementById("textInput");
-
+var image = document.getElementById("image-containter");
 //Variable that holds the game data
 
 
@@ -18,9 +18,9 @@ var winCount = 0;
 var lossCount = 0;
 var triesLeft = 10;
 var wordList = ["FORD", "TOYODA", "CHEVROLET", "TESLA", "PORSCHE", "HONDA"]; //List of words for game
-// var imgList = []; //List image reference
-// var answers = "";
-// var imageSrc = "";
+var imgList = ["assets/images/ford.jpg", "assets/images/toyoda.jpg", "assets/images/chevy.jpg", "assets/images/modelS.jpg", "assets/images/porsche.jpeg","assets/images/honda.jpg"]; //List image reference
+var indexImg = 0;
+var imageSrc = "";
 var displayWord = []; //Empty list to display word as '-' and to compare with answers
 var guess = []; //Empty list to hold letters that the user guessed
 var rightGuess = []; //Empty list to hold letters that the user guessed right
@@ -29,8 +29,12 @@ var win = [];
 
 window.onload = function start() {
     chosenWord = wordList[Math.floor(Math.random() * wordList.length)];
-    console.log(chosenWord.indexOf());
-    console.log(chosenWord)
+    console.log(wordList.indexOf(chosenWord));
+    indexImg = wordList.indexOf(chosenWord);
+    imageSrc = imgList[indexImg];
+    console.log(imageSrc);
+    img.src=imageSrc;
+    console.log(chosenWord);
     displayWord.push(chosenWord);
     console.log(displayWord);
     var blank = displayWord[0].toString()
