@@ -116,9 +116,7 @@ function checkGuess(letter) {
 
 };
 
-function reset(game) {
 
-}
 
 document.onkeyup = function (event) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
