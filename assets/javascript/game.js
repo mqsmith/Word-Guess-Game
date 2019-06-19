@@ -34,6 +34,7 @@ window.onload = function start() {
     imageSrc = imgList[indexImg];
     console.log(imageSrc);
     img.style.opacity = "0.5";
+    img.style.filter = "blur(10px)";
     img.src=imageSrc;
     console.log(chosenWord);
     displayWord.push(chosenWord);
@@ -95,7 +96,18 @@ function checkGuess(letter) {
                 window.onload();
             }
         
-
+        if (tiresLeft <= 7) {
+            img.style.filter =  "blur(8px)";
+            img.style.opacity = ".7";
+        }
+        if (tiresLeft <= 4) {
+            img.style.filter =  "blur(6px)";
+            img.style.opacity = ".8";
+        }
+        if (tiresLeft <= 2) {
+            img.style.filter =  "blur(0px)";
+            img.style.opacity = "1";
+        }
         if (triesLeft === 0) {
             //reset chosenWord
             // reset all associated arrays
